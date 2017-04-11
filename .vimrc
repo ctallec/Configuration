@@ -162,7 +162,8 @@ augroup filetype_lua
 
     function! TorchExec()
         silent !clear
-        execute "!" . g:th_cmd . " " . bufname("%")
+        execute 'silent !gnome-terminal -x zsh -c "' . g:th_cmd . " " . bufname("%") . "; read \\?\'Press a key to continue...\'\""
+        execute "redraw!"
     endfunction
 
     autocmd Filetype lua :nnoremap <buffer> <localleader>r :call TorchExec()<cr>
