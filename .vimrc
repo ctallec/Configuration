@@ -156,6 +156,16 @@ augroup filetype_lua
     let g:lua_internal = 0
     let g:lua_complete_dynamic = 0
     let g:lua_complete_omni = 1 
+    if !exists("g:th_cmd")
+        let g:th_cmd = 'th'
+    endif
+
+    function! TorchExec()
+        silent !clear
+        execute "!" . g:th_cmd . " " . bufname("%")
+    endfunction
+
+    autocmd Filetype lua :nnoremap <buffer> <localleader>r :call TorchExec()<cr>
 augroup END
 " }}}
 
