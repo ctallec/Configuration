@@ -9,20 +9,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'godlygeek/tabular'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()
 filetype plugin indent on
-" }}}
-
-" Path changing {{{
-set path +=**
-" }}}
-
-" Generate tags {{{
-command! MakeTags !ctags -R .
 " }}}
 
 " Colours {{{
@@ -39,8 +28,6 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 set modelines=1
-filetype indent on
-filetype plugin on
 set autoindent
 " }}}
 
@@ -78,67 +65,10 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <leader>q :q<CR>
-nnoremap <leader>l :set list!<CR>
-" }}}
-
-" Vim Latex {{{
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='pdflatex'
-let g:Tex_DefaultTargetFormat='pdf'
-" }}}
-
-" Snippets configuration {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/UltiSnips"
-" }}}
-
-" Spell checking {{{
-nnoremap <silent> <leader>p :set spell!<CR>
-set spelllang=en_gb
-" }}}
-
-" More or less useful remaps {{{
-nnoremap <leader>- ddp
-nnoremap <leader>_ ddkkp
-inoremap <c-u> <esc>viwUi
-nnoremap <leader><c-u> viwU
-vnoremap <leader>' <esc>`<i'<esc>`>la'<esc>
-vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
-onoremap p i(
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F)vi(<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap il{ :<c-u>normal! F}vi{<cr>
-" }}}
-
-" Come Iab cause I'm a dumbass {{{
-iabbrev ouptuts outputs
-" }}}
-
-" Automatic read of changes {{{
-set backupdir=~/.vim/tmp,.
-set directory=~/.vim/tmp,.
-set autoread
-au CursorHold * checktime
 " }}}
 
 " Handling latex {{{
 nnoremap <leader>ll :!pdflatex %<CR>
-" }}}
-
-" snippets {{{
-augroup filetype_python
-    autocmd!
-    autocmd FileType python :iabbrev <buffer> iff if:<left>
-    autocmd FileType python :iabbrev <buffer> def def ():<esc>2hi
-augroup END
-
-augroup filetype_html
-    autocmd!
-    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
-augroup END
 " }}}
 
 " Vimscript file settings {{{
@@ -152,12 +82,8 @@ augroup END
 augroup filetype_lua
     autocmd!
     autocmd Filetype lua setlocal foldmethod=indent
-    let g:lua_interpreter_path = '/home/tallec/torch/install/bin/qlua'
-    let g:lua_internal = 0
-    let g:lua_complete_dynamic = 0
-    let g:lua_complete_omni = 1 
     if !exists("g:th_cmd")
-        let g:th_cmd = 'th'
+        let g:th_cmd = 'qlua -lenv'
     endif
 
     function! TorchExec()
@@ -168,8 +94,4 @@ augroup filetype_lua
 
     autocmd Filetype lua :nnoremap <buffer> <localleader>r :call TorchExec()<cr>
 augroup END
-" }}}
-
-" Completion options {{{
-set completeopt=longest,preview,menu
-" }}}
+"}}}
