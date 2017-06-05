@@ -9,12 +9,43 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
 " }}}
 
+" Python plugin settings {{{
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
+let g:SimpylFold_docstring_preview=1
+
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_python_binary_path = 'python'
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+au BufNewFile,BufRead *.py
+            \ set tabstop=4 |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4 |
+            \ set textwidth=79 |
+            \ set expandtab |
+            \ set autoindent |
+            \ set fileformat=unix |
+            \ set encoding=utf-8 |
+
+" }}}
+
 " Colours {{{
+let python_highligh_all=1
 syntax enable
 " }}}
 
@@ -32,10 +63,7 @@ set autoindent
 " }}}
 
 " Change colorscheme {{{
-set term=xterm-256color
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme zenburn
 " }}}
 
 " UI Layout {{{
@@ -65,6 +93,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <leader>q :q<CR>
+
+map <C-n> :NERDTreeToggle<CR> 
 " }}}
 
 " Handling latex {{{
