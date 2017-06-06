@@ -6,7 +6,7 @@ call vundle#begin()
 " Vundle
 Plugin 'VundleVim/Vundle.vim'
 " Plugins
-Plugin 'vim-airline/vim-airline'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tmhedberg/SimpylFold'
@@ -88,6 +88,7 @@ inoremap jk <esc>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>s :w<CR>
+nnoremap <leader>m :make<CR>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
