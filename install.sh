@@ -2,7 +2,7 @@
 
 # flush vimrc
 rm ~/.vimrc
-ln -s .vimrc ~/.vimrc
+ln -s $(pwd)/.vimrc ~/.vimrc
 
 # install vundle and all plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
