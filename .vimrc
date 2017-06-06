@@ -42,6 +42,7 @@ au BufNewFile,BufRead *.py
             \ set fileformat=unix |
             \ set encoding=utf-8 |
 
+autocmd FileType python nnoremap <buffer> <leader>r :exec '!python' shellescape(@%, 1)<CR>
 " }}}
 
 " Colours {{{
@@ -88,7 +89,7 @@ inoremap jk <esc>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>s :w<CR>
-nnoremap <leader>m :make<CR>
+nnoremap <leader>m :make
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
