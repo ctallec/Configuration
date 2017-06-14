@@ -31,6 +31,7 @@ let g:SimpylFold_docstring_preview=1
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_python_binary_path = 'python'
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>d :YcmCompleter GetDoc<CR>
 
 au BufNewFile,BufRead *.py
             \ set tabstop=4 |
